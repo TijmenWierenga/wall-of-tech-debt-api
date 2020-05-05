@@ -5,10 +5,17 @@ namespace App\Issues;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Ramsey\Uuid\UuidInterface;
 
 final class IssueRepositoryInMemory implements IssueRepository
 {
-    public array $issueCollection = [];
+    public Collection $issueCollection;
+
+    public function __construct()
+    {
+        $this->issueCollection = new ArrayCollection();
+    }
+
 
     public function save(Issue $issue): Issue
     {
@@ -19,6 +26,17 @@ final class IssueRepositoryInMemory implements IssueRepository
 
     public function all(): Collection
     {
-        return new ArrayCollection($this->issueCollection);
+        return $this->issueCollection;
+    }
+
+    public function find(UuidInterface $issueId): Issue
+    {
+        $issue = $this->issueCollection->filter(fn (Issue $issue): bool => $issue->getId() === $issueId)->first();
+
+        if (! $issue) {
+            throw IssueNotFoundException::withId($issueId);
+        }
+
+        return $issue;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Issues;
 
 use Doctrine\Common\Collections\Collection;
+use Ramsey\Uuid\UuidInterface;
 
 interface IssueRepository
 {
@@ -12,4 +13,9 @@ interface IssueRepository
      * @return Collection<Issue>
      */
     public function all(): Collection;
+
+    /**
+     * @throws IssueNotFoundException
+     */
+    public function find(UuidInterface $issueId): Issue;
 }

@@ -34,7 +34,7 @@ final class Vote
     /**
      * @ORM\Column(type="integer")
      */
-    private int $amount;
+    private int $amount = 0;
 
     public function __construct(Issue $issue, UuidInterface $userId)
     {
@@ -52,8 +52,17 @@ final class Vote
         return $this->amount;
     }
 
-    public function getIssueId(): UuidInterface
+    public function increment(int $amount): void
     {
-        return $this->issueId;
+        $this->amount += $amount;
+    }
+
+    public function decrement(int $amount): void
+    {
+        if ($this->amount <= 0) {
+            return;
+        }
+
+        $this->amount -= $amount;
     }
 }

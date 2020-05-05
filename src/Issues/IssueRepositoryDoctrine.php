@@ -6,6 +6,7 @@ namespace App\Issues;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
+use Ramsey\Uuid\UuidInterface;
 
 final class IssueRepositoryDoctrine implements IssueRepository
 {
@@ -33,5 +34,19 @@ final class IssueRepositoryDoctrine implements IssueRepository
         $repository = $this->entityManager->getRepository(Issue::class);
 
         return new ArrayCollection($repository->findAll());
+    }
+
+    public function find(UuidInterface $issueId): Issue
+    {
+        $repository = $this->entityManager->getRepository(Issue::class);
+
+        /** @var Issue|null $issue */
+        $issue = $repository->find($issueId);
+
+        if (! $issue) {
+            throw IssueNotFoundException::withId($issueId);
+        }
+
+        return $issue;
     }
 }

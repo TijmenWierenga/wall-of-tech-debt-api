@@ -33,7 +33,7 @@ final class Issue
      */
     private DateTimeImmutable $createdAt;
     /**
-     * @ORM\OneToMany(targetEntity="App\Issues\Vote", mappedBy="issue", fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="App\Issues\Vote", mappedBy="issue", fetch="EAGER", cascade={"persist", "remove"}))
      */
     private Collection $votes;
 
@@ -69,5 +69,18 @@ final class Issue
     public function getVotes(): Collection
     {
         return $this->votes;
+    }
+
+    public function addVote(Vote $vote): void
+    {
+        if (! $this->votes->contains($vote)) {
+            $this->votes->add($vote);
+        }
+    }
+
+    public function getVoteForUser(UuidInterface $userId): ?Vote
+    {
+        return $this->getVotes()
+            ->filter(fn (Vote $vote): bool => $vote->getUserId()->toString() === $userId->toString())->first();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Issues\Issue;
 use App\Issues\IssueService;
+use App\Issues\Vote;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,17 +29,15 @@ final class IssueController
      */
     public function index(): Response
     {
-        $issues = $this->issueService->getAll()->map(fn (Issue $issue) => [
+        $issues = $this->issueService->getAll()->map(fn (Issue $issue): array => [
             'id' => $issue->getId()->toString(),
             'title' => $issue->getTitle(),
             'createdAt' => $issue->getCreatedAt()->format(DATE_ATOM),
             'authorId' => $issue->getAuthorId()->toString(),
-            'votes' => [
-                [
-                    'by' => $issue->getAuthorId()->toString(),
-                    'amount' => 1
-                ]
-            ]
+            'votes' => $issue->getVotes()->map(fn (Vote $vote): array => [
+                $vote->getUserId()->toString(),
+                $vote->getAmount()
+            ])->toArray()
         ])->toArray();
 
         return new JsonResponse($issues);

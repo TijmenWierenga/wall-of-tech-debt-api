@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Issues;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 
@@ -30,6 +32,10 @@ final class Issue
      * @ORM\Column(type="datetime_immutable")
      */
     private DateTimeImmutable $createdAt;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Issues\Vote", mappedBy="issue", fetch="EAGER")
+     */
+    private Collection $votes;
 
     public function __construct(UuidInterface $id, string $title, UuidInterface $authorId, DateTimeImmutable $createdAt)
     {
@@ -37,6 +43,7 @@ final class Issue
         $this->title = $title;
         $this->authorId = $authorId;
         $this->createdAt = $createdAt;
+        $this->votes = new ArrayCollection();
     }
 
     public function getId(): UuidInterface
@@ -57,5 +64,10 @@ final class Issue
     public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public function getVotes(): Collection
+    {
+        return $this->votes;
     }
 }

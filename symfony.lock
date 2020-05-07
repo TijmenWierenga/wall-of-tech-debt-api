@@ -1,6 +1,18 @@
 {
+    "amphp/amp": {
+        "version": "v2.4.4"
+    },
+    "amphp/byte-stream": {
+        "version": "v1.7.3"
+    },
     "brick/math": {
         "version": "0.8.15"
+    },
+    "composer/semver": {
+        "version": "1.5.1"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.1"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -78,6 +90,12 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
+    "felixfbecker/advanced-json-rpc": {
+        "version": "v3.1.1"
+    },
+    "felixfbecker/language-server-protocol": {
+        "version": "v1.4.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -90,6 +108,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.3"
     },
+    "netresearch/jsonmapper": {
+        "version": "v2.1.0"
+    },
     "nikic/php-parser": {
         "version": "v4.4.0"
     },
@@ -99,8 +120,23 @@
     "ocramius/proxy-manager": {
         "version": "2.8.0"
     },
+    "openlss/lib-array2xml": {
+        "version": "1.0.0"
+    },
     "php": {
         "version": "7.4"
+    },
+    "phpdocumentor/reflection-common": {
+        "version": "2.1.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.1.0"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.1.0"
+    },
+    "psalm/plugin-symfony": {
+        "version": "v1.2.1"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -131,6 +167,9 @@
         "files": [
             "config/packages/ramsey_uuid_doctrine.yaml"
         ]
+    },
+    "sebastian/diff": {
+        "version": "4.0.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -333,7 +372,22 @@
     "twig/twig": {
         "version": "v3.0.3"
     },
+    "vimeo/psalm": {
+        "version": "3.11.2"
+    },
     "webimpress/safe-writer": {
         "version": "2.0.1"
+    },
+    "webmozart/assert": {
+        "version": "1.8.0"
+    },
+    "webmozart/glob": {
+        "version": "4.1.0"
+    },
+    "webmozart/path-util": {
+        "version": "2.3.0"
+    },
+    "weirdan/doctrine-psalm-plugin": {
+        "version": "0.11.1"
     }
 }

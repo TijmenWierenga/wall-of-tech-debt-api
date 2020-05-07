@@ -18,8 +18,11 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
+        "psalm/plugin-symfony": "^1.2",
         "symfony/maker-bundle": "^1.15",
-        "symfony/profiler-pack": "^1.0"
+        "symfony/profiler-pack": "^1.0",
+        "vimeo/psalm": "^3.11",
+        "weirdan/doctrine-psalm-plugin": "^0.11.1"
     },
     "config": {
         "preferred-install": {

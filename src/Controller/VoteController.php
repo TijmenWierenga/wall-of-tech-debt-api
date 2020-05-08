@@ -25,7 +25,12 @@ final class VoteController
      */
     public function addVote(Request $request, string $uuid): Response
     {
-        $amount = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR)['amount'];
+        $amount = json_decode(
+            (string)$request->getContent(),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        )['amount'];
 
         $this->voteService->addVote(
             Uuid::fromString($uuid),
@@ -41,7 +46,12 @@ final class VoteController
      */
     public function removeVote(Request $request, string $uuid): Response
     {
-        $amount = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR)['amount'];
+        $amount = json_decode(
+            (string)$request->getContent(),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        )['amount'];
 
         $this->voteService->removeVote(
             Uuid::fromString($uuid),

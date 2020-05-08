@@ -50,7 +50,7 @@ final class IssueController
     {
         // TODO: Get user from security
 
-        $data = json_decode($request->getContent(), true);
+        $data = json_decode((string)$request->getContent(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->issueService->create(
             $data['title'],

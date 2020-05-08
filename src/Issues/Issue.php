@@ -34,6 +34,7 @@ final class Issue
     private DateTimeImmutable $createdAt;
     /**
      * @ORM\OneToMany(targetEntity="App\Issues\Vote", mappedBy="issue", fetch="EAGER", cascade={"persist", "remove"}))
+     * @var Collection<int, Vote>
      */
     private Collection $votes;
 
@@ -66,6 +67,9 @@ final class Issue
         return $this->createdAt;
     }
 
+    /**
+     * @return Collection<int, Vote>
+     */
     public function getVotes(): Collection
     {
         return $this->votes;
@@ -81,6 +85,6 @@ final class Issue
     public function getVoteForUser(UuidInterface $userId): ?Vote
     {
         return $this->getVotes()
-            ->filter(fn (Vote $vote): bool => $vote->getUserId()->toString() === $userId->toString())->first();
+            ->filter(fn (Vote $vote): bool => $vote->getUserId()->toString() === $userId->toString())->first() ?: null;
     }
 }

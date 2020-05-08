@@ -10,7 +10,7 @@ interface IssueRepository
     public function save(Issue $issue): Issue;
 
     /**
-     * @return Collection<Issue>
+     * @return Collection<int, Issue>
      */
     public function all(): Collection;
 

@@ -16,7 +16,6 @@ final class IssueRepositoryInMemory implements IssueRepository
         $this->issueCollection = new ArrayCollection();
     }
 
-
     public function save(Issue $issue): Issue
     {
         $this->issueCollection[] = $issue;
@@ -24,6 +23,9 @@ final class IssueRepositoryInMemory implements IssueRepository
         return $issue;
     }
 
+    /**
+     * @return Collection<int, Issue>
+     */
     public function all(): Collection
     {
         return $this->issueCollection;

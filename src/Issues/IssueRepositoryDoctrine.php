@@ -27,7 +27,7 @@ final class IssueRepositoryDoctrine implements IssueRepository
     }
 
     /**
-     * @return Collection<Issue>
+     * @return Collection<int, Issue>
      */
     public function all(): Collection
     {

@@ -12,6 +12,6 @@ abstract class NotFoundException extends RuntimeException
 
     public static function withId(UuidInterface $id): self
     {
-        return new static(sprintf('(%s) %s was not found', static::getClass(), $id));
+        return new static(sprintf('(%s) %s was not found', static::getModelFCQN(), $id->toString()));
     }
 }

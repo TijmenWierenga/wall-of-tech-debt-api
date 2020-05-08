@@ -20,7 +20,7 @@ final class VoteService
 
         $vote = $issue->getVoteForUser($userId);
 
-        if ($vote === false) {
+        if (! $vote) {
             $vote = new Vote($issue, $userId);
             $vote->increment($amount);
             $issue->addVote($vote);
@@ -41,7 +41,7 @@ final class VoteService
 
         $vote = $issue->getVoteForUser($userId);
 
-        if ($vote === false) {
+        if (! $vote) {
             return;
         }
 

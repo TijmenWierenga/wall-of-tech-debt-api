@@ -11,7 +11,10 @@ start:
 stop:
 	docker kill wall-api
 
-test: psalm
+test: phpcs psalm phpunit
+
+phpcs:
+	${DOCKER_RUN} vendor/bin/phpcs
 
 psalm:
 	${DOCKER_RUN} vendor/bin/psalm --show-info=true

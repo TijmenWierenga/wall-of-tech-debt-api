@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security;
@@ -36,7 +37,7 @@ final class TokenAuthenticator extends AbstractGuardAuthenticator
 
     public function getCredentials(Request $request): string
     {
-        return $request->headers->get('Authorization');
+        return $request->headers->get('Authorization') ?? '';
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider): User

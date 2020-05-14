@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Security;
@@ -24,7 +25,7 @@ final class TokenAuthenticatorTest extends TestCase
     {
         $this->userRepository = new UserRepositoryInMemory();
         $this->tokenService = new TokenService(random_bytes(32));
-        $this->authenticator = new TokenAuthenticator($this->userRepository, $this->tokenService);    
+        $this->authenticator = new TokenAuthenticator($this->userRepository, $this->tokenService);
     }
 
     public function testItSupportsARequestWithAuthorizationHeader(): void
@@ -85,7 +86,10 @@ final class TokenAuthenticatorTest extends TestCase
         $this->userRepository->users = new ArrayCollection([$user]); // Save the user
         $token = $this->tokenService->createToken($user);
 
-        $result = $this->authenticator->getUser(sprintf('Bearer %s', $token), $this->createMock(UserProviderInterface::class));
+        $result = $this->authenticator->getUser(
+            sprintf('Bearer %s', $token),
+            $this->createMock(UserProviderInterface::class)
+        );
 
         static::assertEquals($user, $result);
     }

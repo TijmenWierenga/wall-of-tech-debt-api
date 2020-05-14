@@ -18,3 +18,9 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Issues'
                 prefix: 'App\Issues'
                 alias: Issues
+            Security:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Security'
+                prefix: 'App\Security'
+                alias: Security

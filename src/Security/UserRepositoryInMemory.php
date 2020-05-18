@@ -30,4 +30,25 @@ final class UserRepositoryInMemory implements UserRepository
 
         return $user;
     }
+
+    public function findByUsername(string $username): User
+    {
+        $user = $this->users->filter(fn (User $user): bool => $user->getUsername() === $username)->first();
+
+        if (! $user) {
+            throw UserNotFoundException::withUsername($username);
+        }
+
+        return $user;
+    }
+
+    public function save(User $user): void
+    {
+        $newCollection = $this->users
+            ->filter(fn (User $item): bool => $user->getId()->toString() !== $item->getId()->toString());
+
+        $newCollection->add($user);
+
+        $this->users = $newCollection;
+    }
 }

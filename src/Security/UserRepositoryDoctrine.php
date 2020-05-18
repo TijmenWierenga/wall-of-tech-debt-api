@@ -28,4 +28,25 @@ final class UserRepositoryDoctrine implements UserRepository
 
         return $user;
     }
+
+    public function findByUsername(string $username): User
+    {
+        $repository = $this->entityManager->getRepository(User::class);
+
+        $user = $repository->findOneBy([
+            'username' => $username
+        ]);
+
+        if (! $user) {
+            throw UserNotFoundException::withUsername($username);
+        }
+
+        return $user;
+    }
+
+    public function save(User $user): void
+    {
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+    }
 }

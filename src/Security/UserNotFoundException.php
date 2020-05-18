@@ -12,4 +12,9 @@ final class UserNotFoundException extends NotFoundException
     {
         return User::class;
     }
+
+    public static function withUsername(string $username): self
+    {
+        return new self(sprintf('User \'%s\' does not exist', $username));
+    }
 }

@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "league/openapi-psr7-validator": "^0.8.1",
         "ramsey/uuid": "^4.0",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^5.5",

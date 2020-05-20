@@ -1,0 +1,193 @@
+openapi: 3.0.0
+info:
+  title: The Wall of Tech Debt
+  version: '1.0'
+  contact:
+    name: Tijmen Wierenga
+    url: 'https://www.github.com/tijmenwierenga'
+    email: t.wierenga@live.nl
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  description: API to interact with the Wall of Tech Debt service.
+servers:
+  - url: 'http://localhost:3100'
+    description: mock
+paths:
+  /issues:
+    get:
+      summary: List issues
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Issue-Read'
+      operationId: get-items
+      description: Returns all technical debt issues
+      tags:
+        - issues
+    post:
+      summary: Create issue
+      operationId: post-items
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Issue-Read'
+      description: Create a new technical debt issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+              required:
+                - title
+      tags:
+        - issues
+    parameters: []
+  '/issues/{id}/upvote':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Upvote an issue
+      operationId: put-items-id-upvote
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueVote-Write'
+      description: Add a vote to an issue in order to increase the issues priority
+      tags:
+        - issues
+        - voting
+  '/issues/{id}/downvote':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Downvote an issue
+      operationId: put-items-id-downvote
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueVote-Write'
+      description: "Remove a vote from an issue in order to decrease it's priority"
+      tags:
+        - issues
+        - voting
+  /login:
+    post:
+      summary: Login
+      operationId: post-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    pattern: "^[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
+                required:
+                  - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: A unique username
+                  example: tijmenwierenga
+                password:
+                  type: string
+                  format: password
+                  description: The password that belongs to the username
+              required:
+                - username
+                - password
+      description: This endpoint should be used in order to authenticate to the API. A successful authentication attempt returns an authentication token. This token must be added to each request as an Authorization header in order to authenticate the request.
+      tags:
+        - authentication
+components:
+  schemas:
+    Issue-Read:
+      title: Issue-Read
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          description: A short description of the described technical debt issue
+        createdAt:
+          type: string
+          format: date-time
+        author:
+          type: string
+          format: uuid
+          description: Unique identifier of the author
+        votes:
+          type: array
+          items:
+            type: object
+            properties:
+              by:
+                type: string
+                format: uuid
+              amount:
+                type: integer
+                minimum: 0
+                maximum: 5
+      required:
+        - id
+        - title
+        - createdAt
+        - author
+      x-tags:
+        - issues
+    IssueVote-Write:
+      title: IssueVote-Write
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          minimum: 1
+          maximum: 5
+      x-tags:
+        - issues
+        - voting
+tags:
+  - name: authentication
+  - name: issues
+  - name: voting

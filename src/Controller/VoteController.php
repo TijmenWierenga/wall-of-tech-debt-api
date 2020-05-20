@@ -22,7 +22,7 @@ final class VoteController
     }
 
     /**
-     * @Route("/issues/{uuid}/upvote", methods={"POST"})
+     * @Route("/issues/{uuid}/upvote", methods={"PUT"})
      */
     public function addVote(Request $request, string $uuid): Response
     {
@@ -43,7 +43,7 @@ final class VoteController
     }
 
     /**
-     * @Route("/issues/{uuid}/downvote", methods={"POST"})
+     * @Route("/issues/{uuid}/downvote", methods={"PUT"})
      */
     public function removeVote(Request $request, string $uuid): Response
     {

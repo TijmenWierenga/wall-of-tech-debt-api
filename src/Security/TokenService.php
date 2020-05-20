@@ -11,6 +11,8 @@ use ParagonIE\Paseto\Builder;
 use ParagonIE\Paseto\JsonToken;
 use ParagonIE\Paseto\Keys\SymmetricKey;
 use ParagonIE\Paseto\Parser;
+use ParagonIE\Paseto\Rules\NotExpired;
+use ParagonIE\Paseto\Rules\ValidAt;
 
 final class TokenService
 {
@@ -37,6 +39,10 @@ final class TokenService
     public function parseToken(string $token): JsonToken
     {
         $parser = Parser::getLocal($this->key);
+
+        $parser->addRule(new NotExpired());
+        $parser->addRule(new ValidAt());
+
         $jsonToken = $parser->parse($token);
         $parser->validate($jsonToken, true);
 

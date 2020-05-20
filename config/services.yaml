@@ -32,3 +32,5 @@ services:
     App\Security\TokenService:
         arguments:
             $sharedKey: '%app.key%'
+
+    Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory: ~

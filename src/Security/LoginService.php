@@ -32,8 +32,8 @@ final class LoginService
         }
 
         if ($this->passwordEncoder->needsRehash($user)) {
-             $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
-             $this->userRepository->save($user);
+            $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
+            $this->userRepository->save($user);
         }
 
         return $this->tokenService->createToken($user);

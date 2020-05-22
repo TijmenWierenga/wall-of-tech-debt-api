@@ -7,12 +7,12 @@ use App\Security\TokenService;
 use App\Security\User;
 use App\Security\UserNotFoundException;
 use App\Security\UserRepositoryInMemory;
+use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
-class LoginServiceTest extends KernelTestCase
+class LoginServiceTest extends TestCase
 {
     private UserRepositoryInMemory $userRepository;
     private UserPasswordEncoderInterface $userPasswordEncoder;

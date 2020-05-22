@@ -36,8 +36,8 @@ final class IssueController
             'createdAt' => $issue->getCreatedAt()->format(DATE_ATOM),
             'authorId' => $issue->getAuthorId()->toString(),
             'votes' => $issue->getVotes()->map(fn (Vote $vote): array => [
-                $vote->getUserId()->toString(),
-                $vote->getAmount()
+                'by' => $vote->getUserId()->toString(),
+                'amount' => $vote->getAmount()
             ])->toArray()
         ])->toArray();
 

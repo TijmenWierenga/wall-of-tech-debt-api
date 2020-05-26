@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Tests\Security;
-
 
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;

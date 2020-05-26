@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\EventSubscriber;
@@ -36,7 +37,7 @@ final class OpenApiValidator implements EventSubscriberInterface
         $request = $event->getRequest();
         $psrRequest = $this->psrHttpFactory->createRequest($request);
 
-        $validator = (new ValidatorBuilder)
+        $validator = (new ValidatorBuilder())
             ->fromYamlFile(__DIR__ . '/../../public/openapi.yaml')
             ->getServerRequestValidator();
 

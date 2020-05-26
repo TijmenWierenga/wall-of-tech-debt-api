@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Contracts;
 
+use App\OpenApi\UrlSchemaFactory;
 use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
 use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
 use League\OpenAPIValidation\PSR7\OperationAddress;
@@ -12,6 +13,7 @@ use League\OpenAPIValidation\PSR7\ValidatorBuilder;
 use League\OpenAPIValidation\Schema\BreadCrumb;
 use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
 use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,8 +24,14 @@ class ContractTestCase extends KernelTestCase
 
     public function setUp(): void
     {
+        static::bootKernel();
+
+        $schemaUrl = self::$container->getParameter('openapi.url');
+
         $this->validator = (new ValidatorBuilder())
-            ->fromYamlFile(__DIR__ . '/../../public/openapi.yaml')
+            ->setSchemaFactory(new UrlSchemaFactory($schemaUrl))
+            // TODO: Figure out why cache doesn't work
+//            ->setCache(self::$container->get(CacheItemPoolInterface::class))
             ->getResponseValidator();
     }
 

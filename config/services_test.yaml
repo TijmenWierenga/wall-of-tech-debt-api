@@ -1,0 +1,3 @@
+services:
+  App\Issues\IssueRepository: '@App\Issues\IssueRepositoryInMemory'
+  App\Security\UserRepository: '@App\Security\UserRepositoryInMemory'

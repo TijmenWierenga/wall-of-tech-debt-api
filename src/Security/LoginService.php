@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security;
@@ -16,8 +17,7 @@ final class LoginService
         UserRepository $userRepository,
         UserPasswordEncoderInterface $passwordEncoder,
         TokenService $tokenService
-    )
-    {
+    ) {
         $this->userRepository = $userRepository;
         $this->passwordEncoder = $passwordEncoder;
         $this->tokenService = $tokenService;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Issues\Issue;
-use App\Issues\IssueService;
-use App\Issues\Vote;
+use App\Domain\Issues\Issue;
+use App\Domain\Issues\IssueService;
+use App\Domain\Issues\Vote;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

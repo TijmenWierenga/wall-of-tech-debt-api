@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Security;
+namespace App\Domain\Security;
 
-use App\Shared\NotFoundException;
+use App\Domain\Shared\NotFoundException;
 
 final class UserNotFoundException extends NotFoundException
 {

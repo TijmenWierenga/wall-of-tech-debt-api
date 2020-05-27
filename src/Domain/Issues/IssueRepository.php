@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Issues;
+namespace App\Domain\Issues;
 
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\UuidInterface;

@@ -2,11 +2,11 @@
 
 namespace App\Tests\Security;
 
-use App\Security\LoginService;
-use App\Security\TokenService;
-use App\Security\User;
-use App\Security\UserNotFoundException;
-use App\Security\UserRepositoryInMemory;
+use App\Domain\Security\LoginService;
+use App\Domain\Security\TokenService;
+use App\Domain\Security\User;
+use App\Domain\Security\UserNotFoundException;
+use App\Domain\Security\UserRepositoryInMemory;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;

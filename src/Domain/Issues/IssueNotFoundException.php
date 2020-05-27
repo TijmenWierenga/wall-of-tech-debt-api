@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Issues;
+namespace App\Domain\Issues;
 
-use App\Shared\NotFoundException;
+use App\Domain\Shared\NotFoundException;
 
 final class IssueNotFoundException extends NotFoundException
 {

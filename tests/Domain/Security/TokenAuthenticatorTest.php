@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Security;
+namespace App\Tests\Domain\Security;
 
 use App\Domain\Security\TokenAuthenticator;
 use App\Domain\Security\TokenService;

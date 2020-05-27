@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Security;
+namespace App\Tests\Domain\Security;
 
 use App\Domain\Security\TokenService;
 use App\Domain\Security\User;

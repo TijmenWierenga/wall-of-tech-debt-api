@@ -9,6 +9,7 @@
         "league/openapi-psr7-validator": "^0.8.1",
         "nelmio/cors-bundle": "^2.0",
         "nyholm/psr7": "^1.2",
+        "paragonie/paseto": "^1.0",
         "ramsey/uuid": "^4.0",
         "ramsey/uuid-doctrine": "^1.6",
         "sensio/framework-extra-bundle": "^5.5",

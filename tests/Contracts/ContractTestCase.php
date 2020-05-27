@@ -30,8 +30,7 @@ class ContractTestCase extends KernelTestCase
 
         $this->validator = (new ValidatorBuilder())
             ->setSchemaFactory(new UrlSchemaFactory($schemaUrl))
-            // TODO: Figure out why cache doesn't work
-//            ->setCache(self::$container->get(CacheItemPoolInterface::class))
+            ->setCache(self::$container->get(CacheItemPoolInterface::class))
             ->getResponseValidator();
     }
 

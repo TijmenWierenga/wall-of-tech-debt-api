@@ -3,7 +3,7 @@ security:
     providers:
         users_in_memory: { memory: null }
     encoders:
-        App\Security\User:
+        App\Domain\Security\User:
             algorithm: 'auto'
     firewalls:
         dev:
@@ -15,7 +15,7 @@ security:
             logout: ~
             guard:
                 authenticators:
-                    - App\Security\TokenAuthenticator
+                    - App\Domain\Security\TokenAuthenticator
             stateless: true
 
             # activate different ways to authenticate

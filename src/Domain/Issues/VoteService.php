@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Issues;
+namespace App\Domain\Issues;
 
 use Ramsey\Uuid\UuidInterface;
 

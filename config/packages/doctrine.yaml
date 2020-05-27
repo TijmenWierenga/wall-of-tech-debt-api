@@ -16,12 +16,12 @@ doctrine:
             Issues:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Issues'
-                prefix: 'App\Issues'
+                dir: '%kernel.project_dir%/src/Domain/Issues'
+                prefix: 'App\Domain\Issues'
                 alias: Issues
             Security:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Security'
-                prefix: 'App\Security'
+                dir: '%kernel.project_dir%/src/Domain/Security'
+                prefix: 'App\Domain\Security'
                 alias: Security

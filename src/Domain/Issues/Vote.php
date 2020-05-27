@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Issues;
+namespace App\Domain\Issues;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
@@ -29,7 +29,7 @@ final class Vote
      */
     private UuidInterface $userId;
     /**
-     * @ORM\ManyToOne(targetEntity="App\Issues\Issue", inversedBy="votes")
+     * @ORM\ManyToOne(targetEntity="App\Domain\Issues\Issue", inversedBy="votes")
      */
     private Issue $issue;
     /**

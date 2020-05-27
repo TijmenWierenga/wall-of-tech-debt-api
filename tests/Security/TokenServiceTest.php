@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Security;
 
-use App\Security\TokenService;
-use App\Security\User;
+use App\Domain\Security\TokenService;
+use App\Domain\Security\User;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 

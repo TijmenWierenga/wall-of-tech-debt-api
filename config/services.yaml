@@ -30,9 +30,9 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Issues\IssueRepository: '@App\Issues\IssueRepositoryDoctrine'
-    App\Security\UserRepository: '@App\Security\UserRepositoryDoctrine'
-    App\Security\TokenService:
+    App\Domain\Issues\IssueRepository: '@App\Domain\Issues\IssueRepositoryDoctrine'
+    App\Domain\Security\UserRepository: '@App\Domain\Security\UserRepositoryDoctrine'
+    App\Domain\Security\TokenService:
         arguments:
             $sharedKey: '%app.key%'
 

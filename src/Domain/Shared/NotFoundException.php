@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared;
+namespace App\Domain\Shared;
 
 use Ramsey\Uuid\UuidInterface;
 use RuntimeException;

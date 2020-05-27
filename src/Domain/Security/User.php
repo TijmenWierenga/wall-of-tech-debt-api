@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Security;
+namespace App\Domain\Security;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
@@ -81,6 +81,5 @@ final class User implements UserInterface
 
     public function eraseCredentials(): void
     {
-        $this->password = '';
     }
 }

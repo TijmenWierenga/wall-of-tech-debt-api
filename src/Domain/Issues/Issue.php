@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Issues;
+namespace App\Domain\Issues;
 
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -34,7 +34,11 @@ final class Issue
      */
     private DateTimeImmutable $createdAt;
     /**
-     * @ORM\OneToMany(targetEntity="App\Issues\Vote", mappedBy="issue", fetch="EAGER", cascade={"persist", "remove"}))
+     * @ORM\OneToMany(
+     *     targetEntity="App\Domain\Issues\Vote",
+     *     mappedBy="issue", fetch="EAGER",
+     *     cascade={"persist", "remove"}
+     * )
      * @var Collection<int, Vote>
      */
     private Collection $votes;

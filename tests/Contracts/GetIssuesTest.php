@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Contracts;
 
-use App\Controller\IssueController;
-use App\Issues\Issue;
-use App\Issues\IssueRepository;
-use App\Security\User;
-use App\Security\UserRepository;
+use App\Controller\Issues\IssueController;
+use App\Domain\Issues\Issue;
+use App\Domain\Issues\IssueRepository;
+use App\Domain\Security\User;
+use App\Domain\Security\UserRepository;
 use DateTimeImmutable;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use Ramsey\Uuid\Uuid;

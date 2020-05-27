@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Issues;
 
 use App\Domain\Issues\Issue;
 use App\Domain\Issues\IssueService;

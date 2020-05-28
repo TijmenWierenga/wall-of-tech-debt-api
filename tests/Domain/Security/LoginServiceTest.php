@@ -7,6 +7,7 @@ use App\Domain\Security\TokenService;
 use App\Domain\Security\User;
 use App\Domain\Security\UserNotFoundException;
 use App\Domain\Security\UserRepositoryInMemory;
+use App\Domain\Shared\SystemClock;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -23,7 +24,7 @@ class LoginServiceTest extends TestCase
     {
         $this->userRepository = new UserRepositoryInMemory();
         $this->userPasswordEncoder = new UserPasswordEncoderFake();
-        $this->tokenService = new TokenService(random_bytes(32));
+        $this->tokenService = new TokenService(random_bytes(32), new SystemClock());
         $this->loginService = new LoginService($this->userRepository, $this->userPasswordEncoder, $this->tokenService);
     }
 

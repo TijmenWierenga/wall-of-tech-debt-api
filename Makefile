@@ -11,7 +11,7 @@ start:
 stop:
 	docker kill wall-api
 
-test: phpcs psalm phpunit
+test: phpcs psalm phpunit infection
 
 phpcs:
 	${DOCKER_RUN} vendor/bin/phpcs

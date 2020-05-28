@@ -21,3 +21,6 @@ psalm:
 
 phpunit:
 	docker run -it --rm -v $$(pwd):/var/www/html -u $$(id -u):$$(id -g) ${IMAGE_NAME}:dev bin/phpunit
+
+infection:
+	docker run -it --rm -v $$(pwd):/var/www/html -u $$(id -u):$$(id -g) ${IMAGE_NAME}:dev phpdbg -qrr 'vendor/bin/infection' --threads=4

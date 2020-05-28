@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Security;
+namespace App\Tests\Domain\Security;
 
 use App\Domain\Security\LoginService;
 use App\Domain\Security\TokenService;

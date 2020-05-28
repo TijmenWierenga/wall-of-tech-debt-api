@@ -28,4 +28,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/issues, roles: IS_AUTHENTICATED_FULLY }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/tags, roles: IS_AUTHENTICATED_FULLY }

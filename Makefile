@@ -17,7 +17,7 @@ phpcs:
 	${DOCKER_RUN} vendor/bin/phpcs
 
 psalm:
-	${DOCKER_RUN} vendor/bin/psalm --show-info=true
+	${DOCKER_RUN} vendor/bin/psalm
 
 phpunit:
 	docker run -it --rm -v $$(pwd):/var/www/html -u $$(id -u):$$(id -g) ${IMAGE_NAME}:dev bin/phpunit

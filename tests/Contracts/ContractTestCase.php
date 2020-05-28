@@ -5,26 +5,26 @@ declare(strict_types=1);
 namespace App\Tests\Contracts;
 
 use App\OpenApi\UrlSchemaFactory;
-use League\OpenAPIValidation\PSR7\Exception\Validation\InvalidBody;
 use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use League\OpenAPIValidation\PSR7\ResponseValidator;
 use League\OpenAPIValidation\PSR7\ValidatorBuilder;
 use League\OpenAPIValidation\Schema\BreadCrumb;
 use League\OpenAPIValidation\Schema\Exception\SchemaMismatch;
-use League\OpenAPIValidation\Schema\Exception\TypeMismatch;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class ContractTestCase extends KernelTestCase
+class ContractTestCase extends WebTestCase
 {
     protected ResponseValidator $validator;
+    protected KernelBrowser $client;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
-        static::bootKernel();
+        $this->client = static::createClient();
 
         $schemaUrl = self::$container->getParameter('openapi.url');
 

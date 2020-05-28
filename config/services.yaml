@@ -32,6 +32,7 @@ services:
 
     App\Domain\Issues\IssueRepository: '@App\Domain\Issues\IssueRepositoryDoctrine'
     App\Domain\Security\UserRepository: '@App\Domain\Security\UserRepositoryDoctrine'
+    App\Domain\Issues\TagRepository: '@App\Domain\Issues\TagRepositoryDoctrine'
     App\Domain\Security\TokenService:
         arguments:
             $sharedKey: '%app.key%'

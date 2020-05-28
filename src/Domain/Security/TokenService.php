@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Security;
 
+use App\Domain\Shared\Clock;
 use DateInterval;
 use DateTime;
 use DateTimeImmutable;
@@ -17,10 +18,12 @@ use ParagonIE\Paseto\Rules\ValidAt;
 final class TokenService
 {
     private SymmetricKey $key;
+    private Clock $clock;
 
-    public function __construct(string $sharedKey)
+    public function __construct(string $sharedKey, Clock $clock)
     {
         $this->key = SymmetricKey::v2($sharedKey);
+        $this->clock = $clock;
     }
 
     public function createToken(User $user): string
@@ -40,8 +43,10 @@ final class TokenService
     {
         $parser = Parser::getLocal($this->key);
 
-        $parser->addRule(new NotExpired());
-        $parser->addRule(new ValidAt());
+        $now = DateTime::createFromImmutable($this->clock->now());
+
+        $parser->addRule(new NotExpired($now));
+        $parser->addRule(new ValidAt($now));
 
         $jsonToken = $parser->parse($token);
         $parser->validate($jsonToken, true);

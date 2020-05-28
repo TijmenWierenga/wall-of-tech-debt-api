@@ -8,6 +8,7 @@ use App\Domain\Security\TokenAuthenticator;
 use App\Domain\Security\TokenService;
 use App\Domain\Security\User;
 use App\Domain\Security\UserRepositoryInMemory;
+use App\Domain\Shared\SystemClock;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
@@ -24,7 +25,7 @@ final class TokenAuthenticatorTest extends TestCase
     protected function setUp(): void
     {
         $this->userRepository = new UserRepositoryInMemory();
-        $this->tokenService = new TokenService(random_bytes(32));
+        $this->tokenService = new TokenService(random_bytes(32), new SystemClock());
         $this->authenticator = new TokenAuthenticator($this->userRepository, $this->tokenService);
     }
 

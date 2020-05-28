@@ -25,6 +25,7 @@
         "symfony/yaml": "5.0.*"
     },
     "require-dev": {
+        "infection/infection": "^0.16.3",
         "psalm/plugin-symfony": "^1.2",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/maker-bundle": "^1.15",

@@ -1,0 +1,20 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Migrations",
+            "Controller",
+            "EventSubscriber",
+            "OpenApi",
+            "Kernel.php"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true
+    }
+}

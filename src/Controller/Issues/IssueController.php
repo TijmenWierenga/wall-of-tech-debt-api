@@ -6,6 +6,7 @@ namespace App\Controller\Issues;
 
 use App\Domain\Issues\Issue;
 use App\Domain\Issues\IssueService;
+use App\Domain\Issues\Tag;
 use App\Domain\Issues\Vote;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -38,6 +39,10 @@ final class IssueController
             'votes' => $issue->getVotes()->map(fn (Vote $vote): array => [
                 'by' => $vote->getUserId()->toString(),
                 'amount' => $vote->getAmount()
+            ])->toArray(),
+            'tags' => $issue->getTags()->map(fn (Tag $tag): array => [
+                'id' => $tag->getId(),
+                'name' => $tag->name
             ])->toArray()
         ])->toArray();
 

@@ -42,6 +42,12 @@ final class Issue
      * @var Collection<int, Vote>
      */
     private Collection $votes;
+    /**
+     * @var Collection<array-key, Tag>
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="issues", fetch="EAGER")
+     * @ORM\JoinTable(name="issue_tags")
+     */
+    private Collection $tags;
 
     public function __construct(UuidInterface $id, string $title, UuidInterface $authorId, DateTimeImmutable $createdAt)
     {
@@ -50,6 +56,7 @@ final class Issue
         $this->authorId = $authorId;
         $this->createdAt = $createdAt;
         $this->votes = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): UuidInterface
@@ -78,6 +85,11 @@ final class Issue
     public function getVotes(): Collection
     {
         return $this->votes;
+    }
+
+    public function getTags(): Collection
+    {
+        return $this->tags;
     }
 
     public function addVote(Vote $vote): void

@@ -1,3 +1,2 @@
 services:
-  App\Domain\Issues\IssueRepository: '@App\Domain\Issues\IssueRepositoryInMemory'
   App\Domain\Security\UserRepository: '@App\Domain\Security\UserRepositoryInMemory'

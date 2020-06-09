@@ -6,16 +6,22 @@ namespace App\Tests\Domain\Issues;
 
 use App\Domain\Issues\IssueRepository;
 use App\Domain\Issues\IssueService;
+use App\Tests\DatabasePrimer;
+use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class IssueServiceTest extends KernelTestCase
 {
+    use DatabasePrimer;
+
     private IssueService $issueService;
 
     public function setUp(): void
     {
         static::bootKernel();
+
+        $this->prepareDatabaseSchema(static::$container->get(EntityManagerInterface::class));
 
         $this->issueService = static::$container->get(IssueService::class);
     }

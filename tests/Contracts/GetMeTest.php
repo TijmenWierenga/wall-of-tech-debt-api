@@ -10,9 +10,8 @@ use App\Tests\DatabasePrimer;
 use Doctrine\ORM\EntityManagerInterface;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use Ramsey\Uuid\Uuid;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-final class PostTagTest extends ContractTestCase
+final class GetMeTest extends ContractTestCase
 {
     use DatabasePrimer;
 
@@ -23,32 +22,29 @@ final class PostTagTest extends ContractTestCase
         $this->prepareDatabaseSchema(self::$container->get(EntityManagerInterface::class));
     }
 
-    public function testItCreatesANewTag(): void
+    public function testItReturnsTheCurrentlyAuthenticatedUser(): void
     {
-        $userRepository = static::$container->get(UserRepository::class);
-        $passwordEncoder = static::$container->get(UserPasswordEncoderInterface::class);
-        $user = User::new(Uuid::uuid4(), 'tijmen', '');
-        $user->setPassword($passwordEncoder->encodePassword($user, '123456'));
+        $userRepository = self::$container->get(UserRepository::class);
+        $user = User::new(Uuid::uuid4(), 'tijmen', 'fake-password');
+        $user->setFirstName('Tijmen');
+        $user->setLastName('Wierenga');
         $userRepository->save($user);
 
         $token = $this->getAccessTokenFor($user);
 
         $this->client->request(
-            'POST',
-            'tags',
+            'GET',
+            'me',
             [],
             [],
             [
                 'CONTENT_TYPE' => 'application/json',
                 'HTTP_AUTHORIZATION' => "Bearer ${token}"
             ],
-            json_encode([
-                'name' => 'docs'
-            ], JSON_THROW_ON_ERROR)
         );
 
         $response = $this->client->getResponse();
 
-        $this->validateResponse(new OperationAddress('/tags', 'post'), $response);
+        $this->validateResponse(new OperationAddress('/me', 'get'), $response);
     }
 }

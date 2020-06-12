@@ -29,3 +29,4 @@ security:
     access_control:
          - { path: ^/issues, roles: IS_AUTHENTICATED_FULLY }
          - { path: ^/tags, roles: IS_AUTHENTICATED_FULLY }
+         - { path: ^/me, roles: IS_AUTHENTICATED_FULLY }

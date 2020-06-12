@@ -8,22 +8,24 @@ use App\Domain\Issues\Issue;
 use App\Domain\Issues\IssueService;
 use App\Domain\Issues\Tag;
 use App\Domain\Issues\Vote;
+use App\Domain\Security\User;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 final class IssueController
 {
-    public const FAKE_USER_ID = '12547459-7701-2983-d145-1182d1d67e02';
-
     /** @var IssueService */
     private IssueService $issueService;
+    private Security $security;
 
-    public function __construct(IssueService $issueService)
+    public function __construct(IssueService $issueService, Security $security)
     {
         $this->issueService = $issueService;
+        $this->security = $security;
     }
 
     /**
@@ -54,13 +56,15 @@ final class IssueController
      */
     public function create(Request $request): Response
     {
-        // TODO: Get user from security
+        /** @var User $user */
+        $user = $this->security->getUser();
+        $userId = $user->getId();
 
         $data = json_decode((string)$request->getContent(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->issueService->create(
             $data['title'],
-            Uuid::fromString(self::FAKE_USER_ID)
+            $userId
         );
 
         return new Response(null, Response::HTTP_CREATED, [

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Contracts;
 
+use App\Domain\Security\TokenService;
+use App\Domain\Security\User;
 use App\OpenApi\UrlSchemaFactory;
 use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
 use League\OpenAPIValidation\PSR7\OperationAddress;
@@ -64,5 +66,12 @@ class ContractTestCase extends WebTestCase
         }
 
         $this->addToAssertionCount(1);
+    }
+
+    protected function getAccessTokenFor(User $user): string
+    {
+        $tokenService = static::$container->get(TokenService::class);
+
+        return $tokenService->createToken($user);
     }
 }

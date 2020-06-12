@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Contracts;
 
-use App\Domain\Security\TokenService;
 use App\Domain\Security\User;
 use App\Domain\Security\UserRepository;
 use App\Tests\DatabasePrimer;
@@ -32,8 +31,7 @@ final class PostTagTest extends ContractTestCase
         $user->setPassword($passwordEncoder->encodePassword($user, '123456'));
         $userRepository->save($user);
 
-        $tokenService = static::$container->get(TokenService::class);
-        $token = $tokenService->createToken($user);
+        $token = $this->getAccessTokenFor($user);
 
         $this->client->request(
             'POST',

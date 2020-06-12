@@ -5,20 +5,23 @@ declare(strict_types=1);
 namespace App\Controller\Issues;
 
 use App\Domain\Issues\VoteService;
+use App\Domain\Security\User;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 final class VoteController
 {
-
     /** @var VoteService */
     private VoteService $voteService;
+    private Security $security;
 
-    public function __construct(VoteService $voteService)
+    public function __construct(VoteService $voteService, Security $security)
     {
         $this->voteService = $voteService;
+        $this->security = $security;
     }
 
     /**
@@ -26,6 +29,10 @@ final class VoteController
      */
     public function addVote(Request $request, string $uuid): Response
     {
+        /** @var User $user */
+        $user = $this->security->getUser();
+        $userId = $user->getId();
+
         $amount = json_decode(
             (string)$request->getContent(),
             true,
@@ -35,7 +42,7 @@ final class VoteController
 
         $this->voteService->addVote(
             Uuid::fromString($uuid),
-            Uuid::fromString(IssueController::FAKE_USER_ID),
+            $userId,
             $amount
         );
 
@@ -47,6 +54,10 @@ final class VoteController
      */
     public function removeVote(Request $request, string $uuid): Response
     {
+        /** @var User $user */
+        $user = $this->security->getUser();
+        $userId = $user->getId();
+
         $amount = json_decode(
             (string)$request->getContent(),
             true,
@@ -56,7 +67,7 @@ final class VoteController
 
         $this->voteService->removeVote(
             Uuid::fromString($uuid),
-            Uuid::fromString(IssueController::FAKE_USER_ID),
+            $userId,
             $amount
         );
 

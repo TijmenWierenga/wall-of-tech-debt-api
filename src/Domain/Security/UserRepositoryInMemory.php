@@ -51,4 +51,9 @@ final class UserRepositoryInMemory implements UserRepository
 
         $this->users = $newCollection;
     }
+
+    public function all(): Collection
+    {
+        return $this->users;
+    }
 }

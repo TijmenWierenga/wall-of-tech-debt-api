@@ -1,2 +1,1 @@
 services:
-  App\Domain\Security\UserRepository: '@App\Domain\Security\UserRepositoryInMemory'

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Security;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\UuidInterface;
 
@@ -48,5 +50,12 @@ final class UserRepositoryDoctrine implements UserRepository
     {
         $this->entityManager->persist($user);
         $this->entityManager->flush();
+    }
+
+    public function all(): Collection
+    {
+        $repository = $this->entityManager->getRepository(User::class);
+
+        return new ArrayCollection($repository->findAll());
     }
 }

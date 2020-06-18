@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Domain\Security;
 
 use App\Domain\Security\User;
+use App\Domain\Security\UserNotFoundException;
 use App\Domain\Security\UserRepository;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -19,6 +20,24 @@ abstract class UserRepositoryTest extends KernelTestCase
     }
 
     abstract public function getRepository(): UserRepository;
+
+    public function testItThrowsANotFoundExceptionWhenUserCannotBeFoundById(): void
+    {
+        $id = Uuid::uuid4(); // Random ID
+
+        $this->expectExceptionObject(UserNotFoundException::withId($id));
+
+        $this->repository->find($id);
+    }
+
+    public function testItThrowsANotFoundExceptionWhenUserCannotBeFoundByUsername(): void
+    {
+        $username = 'i-dont-exist'; // Random ID
+
+        $this->expectExceptionObject(UserNotFoundException::withUsername($username));
+
+        $this->repository->findByUsername($username);
+    }
 
     public function testItSavesAndFindsAUser(): void
     {

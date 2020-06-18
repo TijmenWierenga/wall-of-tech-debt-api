@@ -94,4 +94,9 @@ final class TokenAuthenticatorTest extends TestCase
 
         static::assertEquals($user, $result);
     }
+
+    public function testTheAuthenticatorDoesNotSupportRememberMe(): void
+    {
+        static::assertFalse($this->authenticator->supportsRememberMe());
+    }
 }

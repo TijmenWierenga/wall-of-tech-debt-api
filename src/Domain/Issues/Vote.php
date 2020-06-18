@@ -60,7 +60,8 @@ final class Vote
 
     public function decrement(int $amount): void
     {
-        if ($this->amount <= 0) {
+        if ($this->amount - $amount <= 0) {
+            $this->amount = 0;
             return;
         }
 

@@ -21,11 +21,11 @@ final class User implements UserInterface
      */
     private UuidInterface $id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private string $firstName;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private string $lastName;
     /**

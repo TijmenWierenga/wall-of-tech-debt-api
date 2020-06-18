@@ -23,11 +23,11 @@ final class User implements UserInterface
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private string $firstName;
+    private ?string $firstName = null;
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private string $lastName;
+    private ?string $lastName = null;
     /**
      * @ORM\Column(type="string", unique=true)
      */
@@ -83,7 +83,7 @@ final class User implements UserInterface
     {
     }
 
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
@@ -98,7 +98,7 @@ final class User implements UserInterface
         $this->lastName = $lastName;
     }
 
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }

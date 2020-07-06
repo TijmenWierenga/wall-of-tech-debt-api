@@ -129,6 +129,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.3"
     },
+    "league/fractal": {
+        "version": "0.19.2"
+    },
     "league/openapi-psr7-validator": {
         "version": "0.8.1"
     },

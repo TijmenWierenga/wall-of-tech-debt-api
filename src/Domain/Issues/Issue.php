@@ -34,6 +34,10 @@ final class Issue
      */
     private DateTimeImmutable $createdAt;
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $description = null;
+    /**
      * @ORM\OneToMany(
      *     targetEntity="App\Domain\Issues\Vote",
      *     mappedBy="issue", fetch="EAGER",

@@ -8,7 +8,8 @@
             "Controller",
             "EventSubscriber",
             "OpenApi",
-            "Kernel.php"
+            "Kernel.php",
+            "/\\Transformer\\.php/"
         ]
     },
     "logs": {

@@ -9,6 +9,7 @@
             "EventSubscriber",
             "OpenApi",
             "Kernel.php",
+            "Domain/Shared/SimpleSerializer.php",
             "/\\Transformer\\.php/"
         ]
     },

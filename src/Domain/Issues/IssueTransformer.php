@@ -30,7 +30,8 @@ final class IssueTransformer extends TransformerAbstract
             'id' => $issue->getId()->toString(),
             'title' => $issue->getTitle(),
             'createdAt' => $issue->getCreatedAt()->format(DATE_ATOM),
-            'author' => $issue->getAuthorId()->toString()
+            'author' => $issue->getAuthorId()->toString(),
+            'description' => $issue->getDescription(),
         ];
     }
 

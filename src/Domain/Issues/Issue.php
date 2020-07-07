@@ -108,4 +108,9 @@ final class Issue
         return $this->getVotes()
             ->filter(fn (Vote $vote): bool => $vote->getUserId()->toString() === $userId->toString())->first() ?: null;
     }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
 }

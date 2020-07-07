@@ -8,7 +8,9 @@
             "Controller",
             "EventSubscriber",
             "OpenApi",
-            "Kernel.php"
+            "Kernel.php",
+            "Domain/Shared/SimpleSerializer.php",
+            "/\\Transformer\\.php/"
         ]
     },
     "logs": {

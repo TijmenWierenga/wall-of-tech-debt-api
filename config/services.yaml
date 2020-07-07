@@ -39,5 +39,8 @@ services:
     App\Domain\Shared\Clock: '@App\Domain\Shared\SystemClock'
 
     Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory: ~
+    League\Fractal\Manager:
+        calls:
+            - ['setSerializer', ['@App\Domain\Shared\SimpleSerializer']]
     League\OpenAPIValidation\PSR7\ServerRequestValidator:
         factory: ['App\OpenApi\RequestValidatorFactory', 'createValidator']

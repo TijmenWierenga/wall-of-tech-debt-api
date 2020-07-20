@@ -11,11 +11,10 @@ use Psr\Cache\CacheItemPoolInterface;
 final class RequestValidatorFactory
 {
     public static function createValidator(
-        string $openApiSchemaUrl,
         CacheItemPoolInterface $cache
     ): ServerRequestValidator {
         return (new ValidatorBuilder())
-            ->setSchemaFactory(new UrlSchemaFactory($openApiSchemaUrl))
+            ->fromYamlFile(__DIR__ . '/../../openapi.v1.yaml')
             ->setCache($cache)
             ->getServerRequestValidator();
     }

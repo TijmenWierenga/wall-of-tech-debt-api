@@ -1,0 +1,351 @@
+openapi: 3.0.0
+info:
+  title: The Wall of Tech Debt
+  version: '1.0'
+  contact:
+    name: Tijmen Wierenga
+    url: 'https://www.github.com/tijmenwierenga'
+    email: t.wierenga@live.nl
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  description: API to interact with the Wall of Tech Debt service.
+servers:
+  - url: 'http://localhost:3100'
+    description: mock
+paths:
+  /issues:
+    get:
+      summary: List issues
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Issue-Read'
+      operationId: get-items
+      description: Returns all technical debt issues
+      tags:
+        - issues
+    post:
+      summary: Create issue
+      operationId: post-items
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Issue-Read'
+      description: Create a new technical debt issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+              required:
+                - title
+      tags:
+        - issues
+    parameters: []
+  '/issues/{id}/upvote':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Upvote an issue
+      operationId: put-items-id-upvote
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueVote-Write'
+      description: Add a vote to an issue in order to increase the issues priority
+      tags:
+        - issues
+        - voting
+  '/issues/{id}/downvote':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    put:
+      summary: Downvote an issue
+      operationId: put-items-id-downvote
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueVote-Write'
+      description: "Remove a vote from an issue in order to decrease it's priority"
+      tags:
+        - issues
+        - voting
+  /login:
+    post:
+      summary: Login
+      operationId: post-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    pattern: "^[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
+                required:
+                  - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: A unique username
+                  example: tijmenwierenga
+                password:
+                  type: string
+                  format: password
+                  description: The password that belongs to the username
+              required:
+                - username
+                - password
+      description: This endpoint should be used in order to authenticate to the API. A successful authentication attempt returns an authentication token. This token must be added to each request as an Authorization header in order to authenticate the request.
+      tags:
+        - authentication
+  '/issues/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: ''
+    put:
+      summary: Edit issue
+      operationId: put-issues-id
+      responses:
+        '204':
+          description: No Content
+      description: Edit an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Issue-Write'
+        description: ''
+      tags:
+        - issues
+  /tags:
+    get:
+      summary: Get Tags
+      tags:
+        - tags
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag-Read'
+      operationId: get-tags
+      description: Returns all tags
+    post:
+      summary: Create new tag
+      operationId: post-tags
+      responses:
+        '201':
+          description: Created
+      description: Creata a new tag
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag-Write'
+      tags:
+        - tags
+  /me:
+    get:
+      summary: Get authenticated user
+      tags:
+        - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User-Read'
+      operationId: get-me
+      description: Returns the user data of the authenticated user
+  /users:
+    get:
+      summary: Get all users
+      tags:
+        - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User-Read'
+      operationId: get-users
+      description: Returns all registered users.
+components:
+  schemas:
+    Issue-Read:
+      title: Issue-Read
+      type: object
+      x-tags:
+        - issues
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          description: A short description of the described technical debt issue
+        createdAt:
+          type: string
+          format: date-time
+        author:
+          type: string
+          format: uuid
+          description: Unique identifier of the author
+        votes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vote-Read'
+        tags:
+          type: array
+          description: A list of tags belonging to the issue
+          items:
+            $ref: '#/components/schemas/Tag-Read'
+        description:
+          type:
+            - string
+          nullable: true
+          description: A description for the issue. Markdown is allowed here.
+      required:
+        - id
+        - title
+        - createdAt
+        - author
+        - votes
+        - tags
+        - description
+    IssueVote-Write:
+      title: IssueVote-Write
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          minimum: 1
+          maximum: 5
+      x-tags:
+        - issues
+        - voting
+    Issue-Write:
+      title: Issue-Write
+      type: object
+      properties:
+        title:
+          type: string
+          description: "The issue's title"
+        tags:
+          type: array
+          description: A list of tags
+          items:
+            type: string
+      required:
+        - title
+        - tags
+    Tag-Read:
+      title: Tag-Read
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: The readable description of a tag
+      required:
+        - id
+        - name
+    Tag-Write:
+      title: Tag-Write
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    User-Read:
+      title: User-Read
+      type: object
+      description: ''
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+      required:
+        - id
+        - username
+    Vote-Read:
+      title: Vote-Read
+      type: object
+      properties:
+        by:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          minimum: 0
+      required:
+        - by
+        - amount
+tags:
+  - name: authentication
+  - name: issues
+  - name: tags
+  - name: voting
+  - name: users

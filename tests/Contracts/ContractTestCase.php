@@ -29,7 +29,6 @@ class ContractTestCase extends WebTestCase
 
         $this->validator = (new ValidatorBuilder())
             ->fromYamlFile(__DIR__ . '/../../openapi.v1.yaml')
-            ->setCache(self::$container->get(CacheItemPoolInterface::class))
             ->getResponseValidator();
     }
 

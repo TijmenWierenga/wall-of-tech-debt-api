@@ -6,7 +6,6 @@ namespace App\Tests\Contracts;
 
 use App\Domain\Security\TokenService;
 use App\Domain\Security\User;
-use App\OpenApi\UrlSchemaFactory;
 use League\OpenAPIValidation\PSR7\Exception\ValidationFailed;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use League\OpenAPIValidation\PSR7\ResponseValidator;
@@ -28,11 +27,8 @@ class ContractTestCase extends WebTestCase
     {
         $this->client = static::createClient();
 
-        $schemaUrl = self::$container->getParameter('openapi.url');
-
         $this->validator = (new ValidatorBuilder())
-            ->setSchemaFactory(new UrlSchemaFactory($schemaUrl))
-            ->setCache(self::$container->get(CacheItemPoolInterface::class))
+            ->fromYamlFile(__DIR__ . '/../../openapi.v1.yaml')
             ->getResponseValidator();
     }
 
@@ -62,7 +58,7 @@ class ContractTestCase extends WebTestCase
                 $message .= ':' . PHP_EOL . 'Path: ' . $path . PHP_EOL . 'Error: ' . $e->getPrevious()->getMessage();
             }
 
-            $this->fail($message);
+            static::fail($message);
         }
 
         $this->addToAssertionCount(1);

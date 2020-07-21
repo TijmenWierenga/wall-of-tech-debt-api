@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Issues;
 
+use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\UuidInterface;
 
 interface TagRepository
@@ -17,4 +18,9 @@ interface TagRepository
      * @throws TagNotFoundException
      */
     public function find(UuidInterface $tagId): Tag;
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function all(): Collection;
 }

@@ -52,4 +52,21 @@ abstract class TagRepositoryTest extends KernelTestCase
 
         $this->tagRepository->find(Uuid::uuid4()); // Random Id
     }
+
+    public function testItReturnsAllTags(): void
+    {
+        $tags = [
+            new Tag(Uuid::uuid4(), 'first'),
+            new Tag(Uuid::uuid4(), 'second'),
+            new Tag(Uuid::uuid4(), 'third')
+        ];
+
+        foreach ($tags as $tag) {
+            $this->tagRepository->save($tag);
+        }
+
+        $all = $this->tagRepository->all();
+
+        static::assertEquals($tags, $all->toArray());
+    }
 }

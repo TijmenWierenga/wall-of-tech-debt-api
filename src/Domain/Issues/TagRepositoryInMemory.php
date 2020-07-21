@@ -41,4 +41,9 @@ final class TagRepositoryInMemory implements TagRepository
 
         return $result;
     }
+
+    public function all(): Collection
+    {
+        return $this->tags;
+    }
 }

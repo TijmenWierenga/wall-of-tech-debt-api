@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Issues;
 
+use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\Uuid;
 
 final class TagService
@@ -22,5 +23,13 @@ final class TagService
         $this->tagRepository->save($tag);
 
         return $tag;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getAll(): Collection
+    {
+        return $this->tagRepository->all();
     }
 }

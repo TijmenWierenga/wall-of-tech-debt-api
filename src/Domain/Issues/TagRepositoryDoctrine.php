@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Issues;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\UuidInterface;
@@ -38,5 +40,12 @@ final class TagRepositoryDoctrine implements TagRepository
         }
 
         return $tag;
+    }
+
+    public function all(): Collection
+    {
+        $repository = $this->entityManager->getRepository(Tag::class);
+
+        return new ArrayCollection($repository->findAll());
     }
 }

@@ -8,6 +8,7 @@ use App\Domain\Issues\TagService;
 use App\Domain\Issues\TagTransformer;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Resource\Item;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,12 +40,13 @@ final class TagController
     /**
      * @Route("/tags", methods={"POST"})
      */
-    public function create(Request $request): Response
+    public function create(Request $request): JsonResponse
     {
         $data = json_decode((string) $request->getContent(), true, 512, JSON_THROW_ON_ERROR);
 
-        $this->tagService->create($data['name']);
+        $tag = $this->tagService->create($data['name']);
+        $data = $this->transformer->createData(new Item($tag, new TagTransformer()));
 
-        return new Response(null, Response::HTTP_CREATED);
+        return new JsonResponse($data, Response::HTTP_CREATED);
     }
 }

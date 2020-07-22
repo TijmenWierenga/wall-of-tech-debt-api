@@ -180,6 +180,10 @@ paths:
       responses:
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag-Read'
       description: Creata a new tag
       requestBody:
         content:

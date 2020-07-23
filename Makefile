@@ -11,7 +11,7 @@ start:
 stop:
 	docker kill wall-api
 
-test: phpcs psalm phpunit infection
+test: phpcs psalm deptrac phpunit infection
 
 phpcs:
 	${DOCKER_RUN} vendor/bin/phpcs
@@ -24,3 +24,6 @@ phpunit:
 
 infection:
 	docker run -it --rm -v $$(pwd):/var/www/html -u $$(id -u):$$(id -g) ${IMAGE_NAME}:dev phpdbg -qrr 'vendor/bin/infection' --threads=4
+
+deptrac:
+	${DOCKER_RUN} vendor/bin/deptrac

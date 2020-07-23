@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Issues;
 
+use App\Domain\Issues\CreateIssueCommand;
 use App\Domain\Issues\Issue;
 use App\Domain\Issues\IssueService;
 use App\Domain\Issues\IssueTransformer;
@@ -55,9 +56,10 @@ final class IssueController
         $userId = $user->getId();
 
         $data = json_decode((string)$request->getContent(), true, 512, JSON_THROW_ON_ERROR);
+        $command = CreateIssueCommand::fromArray($data);
 
         $issue = $this->issueService->create(
-            $data['title'],
+            $command,
             $userId
         );
 

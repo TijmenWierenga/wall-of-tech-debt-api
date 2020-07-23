@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Domain\Issues;
 
+use App\Domain\Issues\CreateIssueCommand;
 use App\Domain\Issues\IssueRepository;
 use App\Domain\Issues\IssueService;
 use App\Tests\DatabasePrimer;
@@ -28,7 +29,12 @@ final class IssueServiceTest extends KernelTestCase
 
     public function testItCreatesANewTag(): void
     {
-        $issue = $this->issueService->create('Missing docs', Uuid::uuid4());
+        $command = CreateIssueCommand::fromArray([
+            'title' => 'Missing docs',
+            'tags' => []
+        ]);
+
+        $issue = $this->issueService->create($command, Uuid::uuid4());
 
         $issueRepository = static::$container->get(IssueRepository::class);
 

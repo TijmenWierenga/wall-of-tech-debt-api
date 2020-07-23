@@ -16,7 +16,7 @@ final class UserService
     }
 
     /**
-     * @return Collection<array-key, User>
+     * @return Collection<int, User>
      */
     public function getAll(): Collection
     {

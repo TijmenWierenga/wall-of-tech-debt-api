@@ -47,7 +47,7 @@ final class Issue
      */
     private Collection $votes;
     /**
-     * @var Collection<array-key, Tag>
+     * @var Collection<int, Tag>
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="issues", fetch="EAGER")
      * @ORM\JoinTable(name="issue_tags")
      */

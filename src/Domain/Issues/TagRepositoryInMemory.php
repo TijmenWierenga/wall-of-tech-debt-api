@@ -10,7 +10,7 @@ use Ramsey\Uuid\UuidInterface;
 
 final class TagRepositoryInMemory implements TagRepository
 {
-    /** @var Collection<array-key,Tag> */
+    /** @var Collection<int,Tag> */
     public Collection $tags;
 
     public function __construct()

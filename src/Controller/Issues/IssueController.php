@@ -5,16 +5,12 @@ declare(strict_types=1);
 namespace App\Controller\Issues;
 
 use App\Domain\Issues\CreateIssueCommand;
-use App\Domain\Issues\Issue;
 use App\Domain\Issues\IssueService;
 use App\Domain\Issues\IssueTransformer;
-use App\Domain\Issues\Tag;
-use App\Domain\Issues\Vote;
 use App\Domain\Security\User;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

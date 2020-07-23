@@ -22,7 +22,7 @@ interface UserRepository
     public function save(User $user): void;
 
     /**
-     * @return Collection<array-key, User>
+     * @return Collection<int, User>
      */
     public function all(): Collection;
 }

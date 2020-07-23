@@ -25,7 +25,7 @@ final class Tag
      */
     public string $name;
     /**
-     * @var Collection<array-key, Issue>
+     * @var Collection<int, Issue>
      * @ORM\ManyToMany(targetEntity="Issue", mappedBy="tags")
      */
     private Collection $issues;

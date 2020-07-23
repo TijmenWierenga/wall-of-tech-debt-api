@@ -11,7 +11,7 @@ use Ramsey\Uuid\UuidInterface;
 final class UserRepositoryInMemory implements UserRepository
 {
     /**
-     * @var Collection<array-key, User>
+     * @var Collection<int, User>
      */
     public Collection $users;
 

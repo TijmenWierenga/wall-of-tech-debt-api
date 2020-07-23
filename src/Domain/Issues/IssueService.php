@@ -20,11 +20,11 @@ final class IssueService
         $this->issueRepository = $issueRepository;
     }
 
-    public function create(string $title, UuidInterface $authorId): Issue
+    public function create(CreateIssueCommand $command, UuidInterface $authorId): Issue
     {
         $issue = new Issue(
             Uuid::uuid4(),
-            $title,
+            $command->title,
             $authorId,
             new DateTimeImmutable()
         );

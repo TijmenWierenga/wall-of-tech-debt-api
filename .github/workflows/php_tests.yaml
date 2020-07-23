@@ -22,6 +22,9 @@ jobs:
       - name: Run Psalm
         run: vendor/bin/psalm
 
+      - name: Run Deptrac
+        run: vendor/bin/deptrac
+
       - name: Run PHPUnit
         run: bin/phpunit
 

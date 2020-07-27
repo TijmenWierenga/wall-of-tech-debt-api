@@ -5,6 +5,9 @@ IMAGE_NAME = wall-of-tech-debt/api
 build_dev:
 	DOCKER_BUILDKIT=1 docker build -t ${IMAGE_NAME}:dev .
 
+serve_docs:
+	docker run -itd --rm -v $$(pwd)/openapi.v1.yaml:/usr/share/nginx/html/swagger/openapi.yaml -e SPEC_URL=/openapi.yaml -p 8080:80 redocly/redoc
+
 start:
 	docker run -itd --rm --name=wall-api -v $$(pwd):/var/www/html -p 80:80 ${IMAGE_NAME}:dev
 

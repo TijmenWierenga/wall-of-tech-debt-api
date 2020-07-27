@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use Ramsey\Uuid\Uuid;
 
-final class GetMeTest extends ContractTestCase
+final class MeGetTest extends ContractTestCase
 {
     use DatabasePrimer;
 

@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use League\OpenAPIValidation\PSR7\OperationAddress;
 use Ramsey\Uuid\Uuid;
 
-final class GetTagsTest extends ContractTestCase
+final class TagsGetTest extends ContractTestCase
 {
     use DatabasePrimer;
 

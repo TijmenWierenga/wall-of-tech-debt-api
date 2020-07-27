@@ -12,7 +12,7 @@ use League\OpenAPIValidation\PSR7\OperationAddress;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-final class PostIssueTest extends ContractTestCase
+final class TagsPostTest extends ContractTestCase
 {
     use DatabasePrimer;
 
@@ -23,7 +23,7 @@ final class PostIssueTest extends ContractTestCase
         $this->prepareDatabaseSchema(self::$container->get(EntityManagerInterface::class));
     }
 
-    public function testItCreatesANewIssue(): void
+    public function testItCreatesANewTag(): void
     {
         $userRepository = static::$container->get(UserRepository::class);
         $passwordEncoder = static::$container->get(UserPasswordEncoderInterface::class);
@@ -35,7 +35,7 @@ final class PostIssueTest extends ContractTestCase
 
         $this->client->request(
             'POST',
-            'issues',
+            'tags',
             [],
             [],
             [
@@ -43,13 +43,12 @@ final class PostIssueTest extends ContractTestCase
                 'HTTP_AUTHORIZATION' => "Bearer ${token}"
             ],
             json_encode([
-                'title' => 'Missing documentation',
-                'tags' => [Uuid::uuid4()]
+                'name' => 'docs'
             ], JSON_THROW_ON_ERROR)
         );
 
         $response = $this->client->getResponse();
 
-        $this->validateResponse(new OperationAddress('/issues', 'post'), $response);
+        $this->validateResponse(new OperationAddress('/tags', 'post'), $response);
     }
 }

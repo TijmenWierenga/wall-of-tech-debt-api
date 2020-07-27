@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  api:
+    image: wall-of-tech-debt/api:dev
+    ports:
+      - 80:80
+
+  app:
+    image: wall-of-tech-debt/app:dev
+    ports:
+      - 8080:80
+
+  docs:
+    image: redocly/redoc:latest
+    ports:
+      - 8888:80
+    volumes:
+      - ./openapi.v1.yaml:/usr/share/nginx/html/openapi.yaml
+    environment:
+      - SPEC_URL=/openapi.yaml

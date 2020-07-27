@@ -7258,16 +7258,16 @@
         },
         {
             "name": "psalm/plugin-symfony",
-            "version": "v1.2.2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-symfony.git",
-                "reference": "8abc28c3a3fe8a6c656cc896b0e4956948f3f26e"
+                "reference": "76ff9a0f8eee871f813f29a996c317f568cdb085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-symfony/zipball/8abc28c3a3fe8a6c656cc896b0e4956948f3f26e",
-                "reference": "8abc28c3a3fe8a6c656cc896b0e4956948f3f26e",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-symfony/zipball/76ff9a0f8eee871f813f29a996c317f568cdb085",
+                "reference": "76ff9a0f8eee871f813f29a996c317f568cdb085",
                 "shasum": ""
             },
             "require": {
@@ -7278,9 +7278,10 @@
             },
             "require-dev": {
                 "codeception/base": "^2.5",
+                "doctrine/orm": "^2.7",
                 "phpunit/phpunit": "~7.5",
                 "symfony/console": "*",
-                "weirdan/codeception-psalm-module": "^0.2.2"
+                "weirdan/codeception-psalm-module": "^0.7.3"
             },
             "suggest": {
                 "weirdan/doctrine-psalm-plugin": "If Doctrine is used, it is recommended install this plugin"
@@ -7307,7 +7308,7 @@
                 }
             ],
             "description": "Psalm Plugin for Symfony",
-            "time": "2020-05-27T14:08:01+00:00"
+            "time": "2020-06-19T13:18:31+00:00"
         },
         {
             "name": "sanmai/pipeline",

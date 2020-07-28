@@ -47,9 +47,6 @@ final class TokenService
         
         $parser->addRule(new ValidAt($now));
 
-        $jsonToken = $parser->parse($token);
-        $parser->validate($jsonToken, true);
-
-        return $jsonToken;
+        return $parser->parse($token);
     }
 }

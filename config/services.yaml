@@ -27,14 +27,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Domain\Issues\IssueRepository: '@App\Domain\Issues\IssueRepositoryDoctrine'
-    App\Domain\Security\UserRepository: '@App\Domain\Security\UserRepositoryDoctrine'
-    App\Domain\Issues\TagRepository: '@App\Domain\Issues\TagRepositoryDoctrine'
-    App\Domain\Security\TokenService:
-        arguments:
-            $sharedKey: '%app.key%'
-    App\Domain\Shared\Clock: '@App\Domain\Shared\SystemClock'
-
     Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory: ~
     League\Fractal\Manager:
         calls:

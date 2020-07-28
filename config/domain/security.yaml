@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+  App\Domain\Security\UserRepository: '@App\Domain\Security\UserRepositoryDoctrine'
+  App\Domain\Security\TokenService:
+    arguments:
+      $sharedKey: '%app.key%'

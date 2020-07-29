@@ -23,7 +23,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/psr-http-message-bridge": "^2.0",
         "symfony/security-bundle": "5.0.*",
-        "symfony/yaml": "5.0.*"
+        "symfony/yaml": "5.1.*"
     },
     "require-dev": {
         "infection/infection": "^0.16.3",

@@ -7,7 +7,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "league/fractal": "^0.19.2",
-        "league/openapi-psr7-validator": "^0.8.1",
+        "league/openapi-psr7-validator": "^0.11",
         "nelmio/cors-bundle": "^2.0",
         "nyholm/psr7": "^1.2",
         "paragonie/paseto": "^1.0",

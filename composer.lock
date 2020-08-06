@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9ae24838af9392e79cd69d914560b1b",
+    "content-hash": "decfffe142e7adb04cab358400ab6521",
     "packages": [
         {
             "name": "brick/math",
@@ -60,23 +60,23 @@
         },
         {
             "name": "cebe/php-openapi",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/php-openapi.git",
-                "reference": "ff90fcaa81f9305767ba64bab5175af652302edc"
+                "reference": "672aea69aaeb0c8305ff64b6d6034d9eaadbebf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/php-openapi/zipball/ff90fcaa81f9305767ba64bab5175af652302edc",
-                "reference": "ff90fcaa81f9305767ba64bab5175af652302edc",
+                "url": "https://api.github.com/repos/cebe/php-openapi/zipball/672aea69aaeb0c8305ff64b6d6034d9eaadbebf4",
+                "reference": "672aea69aaeb0c8305ff64b6d6034d9eaadbebf4",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "justinrainbow/json-schema": "^5.0",
                 "php": ">=7.1.0",
-                "symfony/yaml": "^3.0 | ~4.0.0 | ~4.1.0 | ~4.2.0 | ~4.3.0 | ^5.0"
+                "symfony/yaml": "^3.0 | ^4.0 | ^5.0"
             },
             "require-dev": {
                 "apis-guru/openapi-directory": "1.0.0",
@@ -119,7 +119,7 @@
             "keywords": [
                 "openapi"
             ],
-            "time": "2020-04-07T15:56:45+00:00"
+            "time": "2020-05-27T15:32:36+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
@@ -1888,16 +1888,16 @@
         },
         {
             "name": "league/openapi-psr7-validator",
-            "version": "0.8.2",
+            "version": "0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/openapi-psr7-validator.git",
-                "reference": "954f25768969c6b15d62d8be5e11f3458a43b881"
+                "reference": "f17a1dd0bd74ded4ada215ac114e60a84aab1b37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/openapi-psr7-validator/zipball/954f25768969c6b15d62d8be5e11f3458a43b881",
-                "reference": "954f25768969c6b15d62d8be5e11f3458a43b881",
+                "url": "https://api.github.com/repos/thephpleague/openapi-psr7-validator/zipball/f17a1dd0bd74ded4ada215ac114e60a84aab1b37",
+                "reference": "f17a1dd0bd74ded4ada215ac114e60a84aab1b37",
                 "shasum": ""
             },
             "require": {
@@ -1908,7 +1908,7 @@
                 "psr/cache": "^1.0",
                 "psr/http-message": "^1.0",
                 "psr/http-server-middleware": "^1.0",
-                "respect/validation": "^1.1",
+                "respect/validation": "^1.1.3",
                 "riverline/multipart-parser": "^2.0.3",
                 "webmozart/assert": "^1.4"
             },
@@ -1936,7 +1936,7 @@
                 "psr7",
                 "validation"
             ],
-            "time": "2020-05-24T17:55:56+00:00"
+            "time": "2020-08-02T08:11:27+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5153,7 +5153,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",

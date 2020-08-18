@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25cbee1dbeaf96554c2b32fc9495b958",
+    "content-hash": "e21293a3dd218188c44236928d26751f",
     "packages": [
         {
             "name": "brick/math",
@@ -1888,16 +1888,16 @@
         },
         {
             "name": "league/openapi-psr7-validator",
-            "version": "0.11",
+            "version": "0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/openapi-psr7-validator.git",
-                "reference": "f17a1dd0bd74ded4ada215ac114e60a84aab1b37"
+                "reference": "2284946869e4a6868e04d7781f5e869d2848c373"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/openapi-psr7-validator/zipball/f17a1dd0bd74ded4ada215ac114e60a84aab1b37",
-                "reference": "f17a1dd0bd74ded4ada215ac114e60a84aab1b37",
+                "url": "https://api.github.com/repos/thephpleague/openapi-psr7-validator/zipball/2284946869e4a6868e04d7781f5e869d2848c373",
+                "reference": "2284946869e4a6868e04d7781f5e869d2848c373",
                 "shasum": ""
             },
             "require": {
@@ -1936,7 +1936,7 @@
                 "psr7",
                 "validation"
             ],
-            "time": "2020-08-02T08:11:27+00:00"
+            "time": "2020-08-10T14:26:37+00:00"
         },
         {
             "name": "monolog/monolog",

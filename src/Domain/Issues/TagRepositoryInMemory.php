@@ -7,33 +7,34 @@ namespace App\Domain\Issues;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\UuidInterface;
+use TijmenWierenga\Repositories\InMemoryRepository;
 
 final class TagRepositoryInMemory implements TagRepository
 {
-    /** @var Collection<int,Tag> */
-    public Collection $tags;
+    /**
+     * @psalm-var InMemoryRepository<Tag>
+     */
+    private InMemoryRepository $storage;
 
-    public function __construct()
+    public function __construct(InMemoryRepository $storage = null)
     {
-        $this->tags = new ArrayCollection();
+        $this->storage = $storage ?? new InMemoryRepository();
     }
 
     public function save(Tag $tag): void
     {
-        $result = $this->tags->filter(fn (Tag $item): bool => $tag->name === $item->name);
+        $result = $this->storage->find(fn (Tag $item): bool => $tag->name === $item->name);
 
-        if (! $result->isEmpty()) {
+        if ($result instanceof Tag) {
             throw TagAlreadyExistsException::withName($tag->name);
         }
 
-        $this->tags->add($tag);
+        $this->storage->add($tag);
     }
 
     public function find(UuidInterface $tagId): Tag
     {
-        $result = $this->tags
-            ->filter(fn (Tag $item): bool => $tagId->toString() === $item->getId()->toString())
-            ->first();
+        $result = $this->storage->find(fn (Tag $item): bool => $tagId->toString() === $item->getId()->toString());
 
         if (! $result) {
             throw TagNotFoundException::withId($tagId);
@@ -44,6 +45,6 @@ final class TagRepositoryInMemory implements TagRepository
 
     public function all(): Collection
     {
-        return $this->tags;
+        return new ArrayCollection($this->storage->all());
     }
 }

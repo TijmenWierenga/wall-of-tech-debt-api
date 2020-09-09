@@ -7,19 +7,23 @@ namespace App\Domain\Issues;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\UuidInterface;
+use TijmenWierenga\Repositories\InMemoryRepository;
 
 final class IssueRepositoryInMemory implements IssueRepository
 {
-    public Collection $issueCollection;
+    /**
+     * @psalm-var InMemoryRepository<Issue>
+     */
+    private InMemoryRepository $storage;
 
-    public function __construct()
+    public function __construct(InMemoryRepository $storage = null)
     {
-        $this->issueCollection = new ArrayCollection();
+        $this->storage = $storage ?? new InMemoryRepository();
     }
 
     public function save(Issue $issue): Issue
     {
-        $this->issueCollection[] = $issue;
+        $this->storage->add($issue);
 
         return $issue;
     }
@@ -29,14 +33,14 @@ final class IssueRepositoryInMemory implements IssueRepository
      */
     public function all(): Collection
     {
-        return $this->issueCollection;
+        return new ArrayCollection($this->storage->all());
     }
 
     public function find(UuidInterface $issueId): Issue
     {
-        $issue = $this->issueCollection->filter(fn (Issue $issue): bool => $issue->getId() === $issueId)->first();
+        $issue = $this->storage->find(fn (Issue $issue): bool => $issue->getId() === $issueId);
 
-        if (! $issue) {
+        if (! $issue instanceof Issue) {
             throw IssueNotFoundException::withId($issueId);
         }
 

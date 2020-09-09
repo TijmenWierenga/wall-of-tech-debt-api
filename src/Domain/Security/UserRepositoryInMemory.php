@@ -7,22 +7,23 @@ namespace App\Domain\Security;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Ramsey\Uuid\UuidInterface;
+use TijmenWierenga\Repositories\InMemoryRepository;
 
 final class UserRepositoryInMemory implements UserRepository
 {
     /**
-     * @var Collection<int, User>
+     * @psalm-var InMemoryRepository<User>
      */
-    public Collection $users;
+    private InMemoryRepository $storage;
 
     public function __construct(User ...$users)
     {
-        $this->users = new ArrayCollection($users);
+        $this->storage = new InMemoryRepository($users);
     }
 
     public function find(UuidInterface $id): User
     {
-        $user = $this->users->filter(fn (User $user): bool => $user->getId()->toString() === $id->toString())->first();
+        $user = $this->storage->find(fn (User $user): bool => $user->getId()->toString() === $id->toString());
 
         if (! $user) {
             throw UserNotFoundException::withId($id);
@@ -33,7 +34,7 @@ final class UserRepositoryInMemory implements UserRepository
 
     public function findByUsername(string $username): User
     {
-        $user = $this->users->filter(fn (User $user): bool => $user->getUsername() === $username)->first();
+        $user = $this->storage->find(fn (User $user): bool => $user->getUsername() === $username);
 
         if (! $user) {
             throw UserNotFoundException::withUsername($username);
@@ -44,16 +45,13 @@ final class UserRepositoryInMemory implements UserRepository
 
     public function save(User $user): void
     {
-        $newCollection = $this->users
-            ->filter(fn (User $item): bool => $user->getId()->toString() !== $item->getId()->toString());
+        $this->storage->remove(fn (User $item): bool => $user->getId()->toString() === $item->getId()->toString());
 
-        $newCollection->add($user);
-
-        $this->users = $newCollection;
+        $this->storage->add($user);
     }
 
     public function all(): Collection
     {
-        return $this->users;
+        return new ArrayCollection($this->storage->all());
     }
 }

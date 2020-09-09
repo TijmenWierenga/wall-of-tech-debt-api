@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6e195f7e6464415b76e3c1f131ba620",
+    "content-hash": "0d4a4c4b48372696602b4d48847cd946",
     "packages": [
         {
             "name": "brick/math",
@@ -6671,6 +6671,48 @@
                 }
             ],
             "time": "2020-08-26T08:30:57+00:00"
+        },
+        {
+            "name": "tijmenwierenga/repositories",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TijmenWierenga/repository-utilities.git",
+                "reference": "5682a25be6cb06cbabeda10d2364dd6eee154c4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TijmenWierenga/repository-utilities/zipball/5682a25be6cb06cbabeda10d2364dd6eee154c4b",
+                "reference": "5682a25be6cb06cbabeda10d2364dd6eee154c4b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.17.3",
+                "phpunit/phpunit": "^9.3",
+                "squizlabs/php_codesniffer": "^3.5",
+                "vimeo/psalm": "^3.14"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TijmenWierenga\\Repositories\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tijmen Wierenga",
+                    "email": "t.wierenga@live.nl"
+                }
+            ],
+            "description": "A set of utilities to create repositories with superpowers.",
+            "time": "2020-09-09T18:41:51+00:00"
         },
         {
             "name": "webimpress/safe-writer",

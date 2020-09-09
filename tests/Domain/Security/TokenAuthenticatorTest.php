@@ -84,7 +84,7 @@ final class TokenAuthenticatorTest extends TestCase
     public function testItReturnsTheUserFromAValidToken(): void
     {
         $user = User::new(Uuid::uuid4(), 'a-user', 'a-password');
-        $this->userRepository->users = new ArrayCollection([$user]); // Save the user
+        $this->userRepository->save($user);
         $token = $this->tokenService->createToken($user);
 
         $result = $this->authenticator->getUser(

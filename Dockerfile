@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile:experimental
 
 # Use official composer library to move the composer binary to the PHP container
-FROM composer:1.10 AS composer
+FROM composer:2.0 AS composer
 
 FROM php:7.4-apache
 LABEL maintainer="t.wierenga@live.nl"

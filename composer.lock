@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d4a4c4b48372696602b4d48847cd946",
+    "content-hash": "35b588639f0dd234ebbf03ee04fb39bc",
     "packages": [
         {
             "name": "brick/math",
@@ -6746,16 +6746,16 @@
         },
         {
             "name": "tijmenwierenga/repositories",
-            "version": "v0.1.1",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TijmenWierenga/repository-utilities.git",
-                "reference": "5682a25be6cb06cbabeda10d2364dd6eee154c4b"
+                "reference": "fbe52bfc549501e742e10ef50b8790b7c5643de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TijmenWierenga/repository-utilities/zipball/5682a25be6cb06cbabeda10d2364dd6eee154c4b",
-                "reference": "5682a25be6cb06cbabeda10d2364dd6eee154c4b",
+                "url": "https://api.github.com/repos/TijmenWierenga/repository-utilities/zipball/fbe52bfc549501e742e10ef50b8790b7c5643de3",
+                "reference": "fbe52bfc549501e742e10ef50b8790b7c5643de3",
                 "shasum": ""
             },
             "require": {
@@ -6784,7 +6784,7 @@
                 }
             ],
             "description": "A set of utilities to create repositories with superpowers.",
-            "time": "2020-09-09T18:41:51+00:00"
+            "time": "2020-10-20T15:12:00+00:00"
         },
         {
             "name": "webimpress/safe-writer",

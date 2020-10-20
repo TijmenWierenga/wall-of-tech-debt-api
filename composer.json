@@ -24,7 +24,7 @@
         "symfony/psr-http-message-bridge": "^2.0",
         "symfony/security-bundle": "5.1.*",
         "symfony/yaml": "5.1.*",
-        "tijmenwierenga/repositories": "^0.1"
+        "tijmenwierenga/repositories": "^0.2"
     },
     "require-dev": {
         "infection/infection": "^0.17.3",
@@ -80,7 +80,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "5.0.*"
+            "require": "5.1.*"
         }
     }
 }

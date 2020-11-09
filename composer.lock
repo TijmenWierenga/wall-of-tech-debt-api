@@ -1906,16 +1906,16 @@
         },
         {
             "name": "league/openapi-psr7-validator",
-            "version": "0.12.1",
+            "version": "0.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/openapi-psr7-validator.git",
-                "reference": "b59b69780c09712799325edc33d9d64c0dee5716"
+                "reference": "313ecf741a4939e76d4a63f2032e7cc15bc838d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/openapi-psr7-validator/zipball/b59b69780c09712799325edc33d9d64c0dee5716",
-                "reference": "b59b69780c09712799325edc33d9d64c0dee5716",
+                "url": "https://api.github.com/repos/thephpleague/openapi-psr7-validator/zipball/313ecf741a4939e76d4a63f2032e7cc15bc838d4",
+                "reference": "313ecf741a4939e76d4a63f2032e7cc15bc838d4",
                 "shasum": ""
             },
             "require": {
@@ -1954,7 +1954,7 @@
                 "psr7",
                 "validation"
             ],
-            "time": "2020-09-09T08:07:46+00:00"
+            "time": "2020-10-31T11:23:15+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fbd2d299e47dbe1ba944850997559691",
+    "content-hash": "6d43efc0a20ab275620b96ea3082f937",
     "packages": [
         {
             "name": "brick/math",
@@ -8184,23 +8184,23 @@
         },
         {
             "name": "sensiolabs-de/deptrac-shim",
-            "version": "0.9.0",
+            "version": "0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs-de/deptrac-shim.git",
-                "reference": "c40784b1caa27978f27ec8355c2e0a2eb213cfd9"
+                "reference": "27b0fa91d3b4e56846d9df11a2c2f3fd0487241b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs-de/deptrac-shim/zipball/c40784b1caa27978f27ec8355c2e0a2eb213cfd9",
-                "reference": "c40784b1caa27978f27ec8355c2e0a2eb213cfd9",
+                "url": "https://api.github.com/repos/sensiolabs-de/deptrac-shim/zipball/27b0fa91d3b4e56846d9df11a2c2f3fd0487241b",
+                "reference": "27b0fa91d3b4e56846d9df11a2c2f3fd0487241b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "ext-zlib": "*",
-                "php": "^7.2"
+                "php": "^7.2 || 8.0.*"
             },
             "replace": {
                 "sensiolabs-de/astrunner": "^1.0",
@@ -8225,7 +8225,7 @@
                 }
             ],
             "description": "deptrac phar distribution",
-            "time": "2020-10-30T13:48:36+00:00"
+            "time": "2020-12-08T17:09:50+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

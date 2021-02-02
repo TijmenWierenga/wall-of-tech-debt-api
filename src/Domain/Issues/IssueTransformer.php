@@ -20,7 +20,7 @@ final class IssueTransformer extends TransformerAbstract
         'votes',
         'tags'
     ];
-    
+
     /**
      * @return array<string, mixed>
      */

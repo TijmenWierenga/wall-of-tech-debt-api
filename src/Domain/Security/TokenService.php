@@ -44,7 +44,7 @@ final class TokenService
         $parser = Parser::getLocal($this->key);
 
         $now = DateTime::createFromImmutable($this->clock->now());
-        
+
         $parser->addRule(new ValidAt($now));
 
         return $parser->parse($token);

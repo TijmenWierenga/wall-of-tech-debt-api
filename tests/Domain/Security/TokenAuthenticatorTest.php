@@ -21,7 +21,7 @@ final class TokenAuthenticatorTest extends TestCase
     private TokenAuthenticator $authenticator;
     private UserRepositoryInMemory $userRepository;
     private TokenService $tokenService;
-    
+
     protected function setUp(): void
     {
         $this->userRepository = new UserRepositoryInMemory();

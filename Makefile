@@ -30,3 +30,6 @@ infection:
 
 deptrac:
 	${DOCKER_RUN} vendor/bin/deptrac
+
+phpcbf:
+	${DOCKER_RUN} vendor/bin/phpcbf

@@ -14,7 +14,7 @@ jobs:
         run: composer validate --no-check-publish
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
 
       - name: Run PHP Codesniffer
         run: vendor/bin/phpcs
@@ -22,8 +22,8 @@ jobs:
       - name: Run Psalm
         run: vendor/bin/psalm
 
-      - name: Run Deptrac
-        run: vendor/bin/deptrac
+#      - name: Run Deptrac
+#        run: vendor/bin/deptrac
 
       - name: Run PHPUnit
         run: bin/phpunit

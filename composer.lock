@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2589a0b6efd5b229c9cd6a63502db1e3",
+    "content-hash": "6b9b68ff1f4cd1fb880e3937d173fda7",
     "packages": [
         {
             "name": "brick/math",
@@ -8573,27 +8573,26 @@
         },
         {
             "name": "sensiolabs-de/deptrac-shim",
-            "version": "0.9.0",
+            "version": "0.14.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sensiolabs-de/deptrac-shim.git",
-                "reference": "c40784b1caa27978f27ec8355c2e0a2eb213cfd9"
+                "url": "https://github.com/qossmic/deptrac-shim.git",
+                "reference": "c1a52220347dce6816349a1ad9aa30f9cb2cc992"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs-de/deptrac-shim/zipball/c40784b1caa27978f27ec8355c2e0a2eb213cfd9",
-                "reference": "c40784b1caa27978f27ec8355c2e0a2eb213cfd9",
+                "url": "https://api.github.com/repos/qossmic/deptrac-shim/zipball/c1a52220347dce6816349a1ad9aa30f9cb2cc992",
+                "reference": "c1a52220347dce6816349a1ad9aa30f9cb2cc992",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-tokenizer": "*",
                 "ext-zlib": "*",
-                "php": "^7.2"
+                "php": "^7.2 || 8.0.*"
             },
             "replace": {
-                "sensiolabs-de/astrunner": "^1.0",
-                "sensiolabs-de/deptrac": "self.version"
+                "qossmic/deptrac": "self.version"
             },
             "suggest": {
                 "ext-dom": "For using the JUnit output formatter"
@@ -8609,17 +8608,17 @@
             "authors": [
                 {
                     "name": "Simon Mönch",
-                    "email": "simon.moench@sensiolabs.de",
+                    "email": "simon.moench@qossmic.com",
                     "role": "maintainer"
                 }
             ],
             "description": "deptrac phar distribution",
             "support": {
-                "issues": "https://github.com/sensiolabs-de/deptrac-shim/issues",
-                "source": "https://github.com/sensiolabs-de/deptrac-shim/tree/0.9.0"
+                "issues": "https://github.com/qossmic/deptrac-shim/issues",
+                "source": "https://github.com/qossmic/deptrac-shim/tree/0.14.0"
             },
             "abandoned": "qossmic/deptrac-shim",
-            "time": "2020-10-30T13:48:36+00:00"
+            "time": "2021-06-23T09:00:55+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -10073,5 +10072,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
